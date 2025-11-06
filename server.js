@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
-let houses =
+let volunteers =
 [
 	{
 		"id": "indv-vol",
@@ -50,14 +50,14 @@ let houses =
 	}
 ]
 
-app.get("/api/houses/", (req, res)=>{ //this is the get request, make sure you put this in your front end 
+app.get("/api/volunteers/", (req, res)=>{ //this is the get request, make sure you put this in your front end 
     console.log("in get request");
-    res.send(houses);
+    res.send(volunteers);
 });
 
-app.get("/api/houses/:id", (req, res)=>{ 
-    const house = houses.find((house)=> house._id === parseInt(req.params.id));
-    res.send(houses);
+app.get("/api/volunteers/:id", (req, res)=>{ 
+    const volunteer = volunteers.find((volunteer)=> volunteer.id === req.params.id);
+    res.send(volunteer);
 });
 
 app.listen(3001, () => {
