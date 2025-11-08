@@ -10,7 +10,7 @@ let volunteers =
 [
 	{
 		"id": "indv-vol",
-		"image": "../src/ImgGallery/IndvVol.webp",
+		"image": "IndvVol.webp",
 		"title": "Volunteer Individually",
 		"description": "Take part in one-off or recurring volunteer opportunities that fit your schedule.",
 		"link": "/volunteer/individual",
