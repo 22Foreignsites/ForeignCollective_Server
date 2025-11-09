@@ -6,11 +6,30 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
+const express = require("express");
+const cors = require("cors");
+const multer = require("multer");
+app.use(express.static("public"));
+app.use(express.json());
+app.use(cors());
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "./public/images/");
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    },
+  });
+  
+  const upload = multer({ storage: storage });
+
+
 let volunteers =
 [
 	{
 		"id": "indv-vol",
-		"image": "/images/IndvVol.webp",
+		"image": "IndvVol.webp",
 		"title": "Volunteer Individually",
 		"description": "Take part in one-off or recurring volunteer opportunities that fit your schedule.",
 		"link": "/volunteer/individual",
@@ -18,7 +37,7 @@ let volunteers =
 	},
 	{
 		"id": "animal-shelter",
-		"image": "/images/AnimalShelter.webp",
+		"image": "../src/ImgGallery/AnimalShelter.webp",
 		"title": "Animal Shelter Support",
 		"description": "Help care for animals and support shelter operations.",
 		"link": "/volunteer/animal-shelter",
@@ -26,7 +45,7 @@ let volunteers =
 	},
 	{
 		"id": "park-cleanup",
-		"image": "/images/ParkCleanUp.webp",
+		"image": "../src/ImgGallery/ParkCleanUp.webp",
 		"title": "Park Clean-Up",
 		"description": "Join a group to clean up and restore local parks and trails.",
 		"link": "/volunteer/park-cleanup",
@@ -34,7 +53,7 @@ let volunteers =
 	},
 	{
 		"id": "soup-kitchen",
-		"image": "/images/SoupKitchen.webp",
+		"image": "../src/ImgGallery/SoupKitchen.webp",
 		"title": "Soup Kitchen",
 		"description": "Assist with meal prep and distribution for those in need.",
 		"link": "/volunteer/soup-kitchen",
@@ -42,7 +61,7 @@ let volunteers =
 	},
 	{
 		"id": "highway-cleanup",
-		"image": "/images/HighwayCleanup.webp",
+		"image": "../src/ImgGallery/HighwayCleanup.webp",
 		"title": "Highway Clean-Up",
 		"description": "Help keep roadsides safe and clean with organized crews.",
 		"link": "/volunteer/highway-cleanup",
