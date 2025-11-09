@@ -30,7 +30,7 @@ let volunteers =
 	},
 	{
 		"id": "animal-shelter",
-		"image": "../src/ImgGallery/AnimalShelter.webp",
+		"image": "AnimalShelter.webp",
 		"title": "Animal Shelter Support",
 		"description": "Help care for animals and support shelter operations.",
 		"link": "/volunteer/animal-shelter",
@@ -38,7 +38,7 @@ let volunteers =
 	},
 	{
 		"id": "park-cleanup",
-		"image": "../src/ImgGallery/ParkCleanUp.webp",
+		"image": "ParkCleanUp.webp",
 		"title": "Park Clean-Up",
 		"description": "Join a group to clean up and restore local parks and trails.",
 		"link": "/volunteer/park-cleanup",
@@ -46,7 +46,7 @@ let volunteers =
 	},
 	{
 		"id": "soup-kitchen",
-		"image": "../src/ImgGallery/SoupKitchen.webp",
+		"image": "/SoupKitchen.webp",
 		"title": "Soup Kitchen",
 		"description": "Assist with meal prep and distribution for those in need.",
 		"link": "/volunteer/soup-kitchen",
@@ -54,7 +54,7 @@ let volunteers =
 	},
 	{
 		"id": "highway-cleanup",
-		"image": "../src/ImgGallery/HighwayCleanup.webp",
+		"image": "HighwayCleanup.webp",
 		"title": "Highway Clean-Up",
 		"description": "Help keep roadsides safe and clean with organized crews.",
 		"link": "/volunteer/highway-cleanup",
