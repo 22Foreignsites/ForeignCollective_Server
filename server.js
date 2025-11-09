@@ -6,13 +6,6 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
-const express = require("express");
-const cors = require("cors");
-const multer = require("multer");
-app.use(express.static("public"));
-app.use(express.json());
-app.use(cors());
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, "./public/images/");
