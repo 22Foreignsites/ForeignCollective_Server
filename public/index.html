@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Volunteers Server</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Foreign Collective - Volunteers API</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Volunteers Server Express</h1>
-        <section>
-            <h2> Get all Volunteers</h2>
-            <p><a href = "/api/volunteers/">/api/volunteers/</a></p>
-        </section>
+        <main class="container">
+            <header>
+                <div class="brand">
+                    <img src="images/logo1.jpg" alt="Foreign Collective logo" class="logo" />
+                    <div>
+                      <h1>Volunteers Server</h1>
+                      <p class="muted">A simple Express server exposing a volunteers API for reading and adding volunteer entries.</p>
+                    </div>
+                </div>
+            </header>
+
+            <section aria-labelledby="about">
+                <h2 id="about">About this server</h2>
+                <p>This server provides a small REST API used by the Foreign Collective project to store and retrieve volunteer records. It is built with Node + Express and exposes one primary resource: <code class="endpoint">/api/volunteers/</code>.</p>
+            </section>
+
+            <section aria-labelledby="adding">
+                <h2 id="adding">How to add volunteers</h2>
+                <p>To add a volunteer, send a POST request to the volunteers endpoint with a JSON body. Example using curl:</p>
+                <pre><code>curl -X POST /api/volunteers/ \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Alex Chen","email":"alex@example.com","cause":"Park cleanup"}'</code></pre>
+                <p>Server should respond with the created resource (201) or an error if the payload is invalid.</p>
+            </section>
+
+            <section aria-labelledby="reading">
+                <h2 id="reading">How to read volunteers</h2>
+                <p>To read all volunteers, open the endpoint in your browser or fetch it programmatically:</p>
+                <p><a href="/api/volunteers/">/api/volunteers/</a></p>
+                <p>Example JSON response (array of volunteers):</p>
+                <pre><code>[
+    {
+        "id": 1,
+        "name": "Alex Chen",
+        "email": "alex@example.com",
+        "cause": "Park cleanup"
+    }
+]</code></pre>
+            </section>
+
+            <section aria-labelledby="notes">
+                <h2 id="notes">Notes & troubleshooting</h2>
+                <ul>
+                    <li>Make sure the server is running (npm start) before calling the endpoints.</li>
+                    <li>Use proper Content-Type headers when POSTing JSON.</li>
+                    <li>If you see a CORS error when calling from a different origin, enable CORS in the Express app.</li>
+                </ul>
+            </section>
+        </main>
     </body>
 </html>
