@@ -104,14 +104,65 @@ app.post("/api/volunteers", upload.single("img"), (req,res)=>{
 	res.status(200).send(Volunteer);
 });
 
-const validateVolunteer = (house) => {
+
+
+
+app.put("/api/volunteers/:id", upload.single("img"), (req, res)=>{
+    //console.log(`You are trying to edit ${req.params.id}`);
+    //console.log(req.body);
+
+    const volunteer = volunteers.find((v)=>v.id===req.params.id);
+
+     if(!volunteer) {
+        res.status(404).send("The volunteer you wanted to edit is unavailable");
+        return;
+    }
+
+    const isValidUpdate = validateVolunteer(req.body);
+
+    if(isValidUpdate.error){
+        console.log("Invalid Info");
+        res.status(400).send(isValidUpdate.error.details[0].message);
+        return;
+	}
+	
+	volunteer.description = req.body.description;
+	volunteer.title = req.body.title;
+	volunteer.link = req.body.link;
+	
+	if(req.file){
+        volunteer.image = req.file.filename;
+    }
+
+    res.status(200).send(volunteer);
+
+});
+
+app.delete("/api/volunteers/:id", (req,res)=>{
+    const volunteer = volunteers.find((v)=>v.id===req.params.id);
+
+    if(!volunteer) {
+        res.status(404).send("The volunteer you wanted to delete is unavailable");
+        return;
+    }
+
+    const index = volunteers.indexOf(volunteer);
+    volunteers.splice(index, 1);
+    res.status(200).send(volunteer);
+});
+
+
+
+
+
+const validateVolunteer = (volunteer) => {
 	const schema = Joi.object({
 		_id: Joi.allow(""),
 		title: Joi.string().min(1).required(),
 		description: Joi.string().min(1).required(),
 		link: Joi.string().min(1).required(),
 	});
-	return schema.validate(house);
+	return schema.validate(volunteer);
 }
 
 
