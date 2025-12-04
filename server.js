@@ -76,6 +76,15 @@ mongoose
 	image: String,
   });
 
+  volunteerSchema.set('toJSON', {
+  virtuals: true,
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+  }
+});
+
   const Volunteer = mongoose.model("Volunteer", volunteerSchema);
 
 app.get("/api/volunteers/", async (req, res)=>{ //this is the get request, make sure you put this in your front end 
